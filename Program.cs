@@ -7,7 +7,6 @@ namespace Cse210Starter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
 
             static List<string> CreateBoard()
             {
@@ -82,14 +81,16 @@ namespace Cse210Starter
                     lastTurn = "o";
                 }
 
-                if (turn < 4) {
+                if (turn > 3) {
                     List<string> winStatus = CheckWin(lastTurn, squares);
                     bool win = Boolean.Parse(winStatus[0]);
                     if (win) {
                         string winner = lastTurn;
+                        PrintBoard(squares);
                         Console.WriteLine($"{lastTurn} wins! Three in a row! ");
                         break;
                     } else if (turn == 8 && !win) {
+                        PrintBoard(squares);
                         Console.WriteLine("Tie! No one wins. ");
                         break;
                     }
